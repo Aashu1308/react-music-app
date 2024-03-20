@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 mongoose.connect('mongodb://localhost:27017/musicdb', {
 });
 
@@ -38,9 +38,9 @@ const User = mongoose.model('users', UserSchema);
 User.createIndexes();
 
 // For backend and express
-const express = require('express');
+import express from 'express';
 const app = express();
-const cors = require("cors");
+import cors from 'cors';
 const port = 8080;
 console.log("App listen at port 8080");
 app.use(express.json());

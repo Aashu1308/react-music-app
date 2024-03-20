@@ -1,17 +1,31 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Axios from "axios";
 
 const Login = () =>{
     const[username,setUsername]=useState("");
     const[password,setPassword]=useState("");
-    function validateLogin(){
-        return username=="abc" && password=="xyz";
-    }
+    const[userData,setUserData]=useState([]);
+    const[loggedIn,setLoggedIn]=useState(false);
 
-    const handleLogin = async(e) =>{
-      e.preventDefault()
-      if(validateLogin()) alert("Logged In Successfully!");
-      else alert("Invalid Username or Password.");
+    useEffect(()=>{
+      Axios.get('http://localhost:4000/api/userdata')
+      .then((res)=>setUserData(res.data))
+      .catch(error => console.error("Error fetching user data:", error));
+    },[]);
+
+    const handleLogin = (e) =>{
+        e.preventDefault();
+        const user = userData.find(user => user.username === username && user.password === password);
+
+        if(user){
+          setLoggedIn(true);
+          alert("Logged In Successfully!");
+        }
+        else{
+          setLoggedIn(false);
+          alert("Invalid Username or Password.");
+        }
     }
     
     return(
