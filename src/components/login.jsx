@@ -20,11 +20,15 @@ const Login = () =>{
 
         if(user){
           setLoggedIn(true);
-          alert("Logged In Successfully!");
+          alert("Logged In Successfully! Hello "+user.username+"!");
+          setUsername("");
+          setPassword("");
         }
         else{
           setLoggedIn(false);
           alert("Invalid Username or Password.");
+          setUsername("");
+          setPassword("");
         }
     }
     
