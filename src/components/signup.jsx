@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Routes, Link} from "react-router-dom";
 
 const Signup = () =>{
     const[email,setEmail]=useState("");
