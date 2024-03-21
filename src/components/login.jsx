@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Axios from "axios";
+import "./login.css"
 
 const Login = () =>{
     const[username,setUsername]=useState("");
@@ -34,8 +35,8 @@ const Login = () =>{
     
     return(
         <>
-        <h1>Login</h1>
       <div className="card">
+        <h1>Login</h1>
         <form>
         <p>Username: </p> <input type='text' id='uname' name='uname' value={username} onChange={(e) => setUsername(e.target.value)}></input>
         <p>Password: </p> <input type='password' id='password' name='password' value={password} onChange={(e) => setPassword(e.target.value)}></input>

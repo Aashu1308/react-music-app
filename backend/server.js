@@ -15,3 +15,5 @@ createServer(async (req,res)=> {
         }
     }
 }).listen(4000);
+console.log("App listen at port 4000");
+console.log("Connected to api server");

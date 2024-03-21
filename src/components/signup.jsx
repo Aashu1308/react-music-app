@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 
 const Signup = () =>{
     const[email,setEmail]=useState("");
     const[username,setUsername]=useState("");
     const[password,setPassword]=useState("");
-    const [signupSuccess, setSignupSuccess] = useState(false);
+    const navigate = useNavigate();
+
     const handleSignIn = async (e) => {
         e.preventDefault();
     
@@ -30,11 +31,10 @@ const Signup = () =>{
                 setEmail("");
                 setUsername("");
                 setPassword("");
-                setSignupSuccess(true);
+                navigate("/");
             }
         } catch (error) {
             console.error("Error:", error);
-            setSignupSuccess(false);
         }
     }
     
@@ -49,9 +49,6 @@ const Signup = () =>{
         <br></br><br></br>
         <button type='submit' onClick={handleSignIn} >Sign Up</button><br></br>
         </form>
-        {signupSuccess &&
-            (<p><Link to="/">Go to Login Page</Link></p>)
-        }
       </div>
         </>
     )
