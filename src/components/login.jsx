@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 import Axios from "axios";
-import "./login.css"
+import "./login.css";
 
 const Login = () =>{
     const[username,setUsername]=useState("");
@@ -9,6 +9,7 @@ const Login = () =>{
     const[userData,setUserData]=useState([]);
     const[loggedIn,setLoggedIn]=useState(false);
     const[mistakeCount,setMistakeCount]=useState(0);
+    const navigate = useNavigate();
 
     useEffect(()=>{
       Axios.get('http://localhost:4000/api/userdata')
@@ -26,6 +27,8 @@ const Login = () =>{
           setUsername("");
           setPassword("");
           setMistakeCount(0);
+          sessionStorage.setItem('loggedInUser', JSON.stringify(user));
+          navigate("/home");
         }
         else{
           setLoggedIn(false);
