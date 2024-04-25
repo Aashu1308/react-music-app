@@ -49,7 +49,7 @@ app.get("/", (req, resp) => {
 
 	resp.send("App is Working");
 	// You can check backend is working or not by 
-	// entering http://loacalhost:5000
+	// entering http://loacalhost:8080
 	
 	// If you see App is working means
 	// backend working properly
