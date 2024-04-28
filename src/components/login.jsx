@@ -49,8 +49,9 @@ const Login = () =>{
         <p>Username: </p> <input type='text' id='uname' name='uname' value={username} onChange={(e) => setUsername(e.target.value)}></input>
         <p>Password: </p> <input type='password' id='password' name='password' value={password} onChange={(e) => setPassword(e.target.value)}></input>
         <br></br><br></br>
-        <button type='submit' onClick={handleLogin} disabled={mistakeCount>=5}>Login</button><br></br>
+        <button className='login' type='submit' onClick={handleLogin} disabled={mistakeCount>=5}>Login</button><br></br>
         {mistakeCount > 0 && <p className='warning'>Attempts left: {attemptsLeft}</p>}
+        <br></br>
         <p>If you haven't already ,  <Link to="/signup">Sign Up</Link></p>
         </form>
       </div>
